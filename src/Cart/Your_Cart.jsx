@@ -9,7 +9,11 @@ const Your_Cart=()=>{
     const initial_cart=[]
     Cart_items.forEach(element => {
         initial_cart.push(
-            <div key={element.key}>{element.props.children.In_Cart_Components()}</div>
+            <tr key={element.key}>
+                <td className="border border-slate-600 p-5 flex flex-col gap-5">
+                    {element.props.children.In_Cart_Components()}
+                </td>
+            </tr>
         )
     })
     const [ItemsOfCart,SetItemsOfCart]=useState(initial_cart);
@@ -21,7 +25,11 @@ const Your_Cart=()=>{
         const arr=[]
         Cart_items.forEach(element => {
             arr.push(
-                <div key={element.key}>{element.props.children.In_Cart_Components()}</div>
+                <tr key={element.key}>
+                    <td className="border border-slate-600 p-5 flex flex-col gap-5">
+                        {element.props.children.In_Cart_Components()}
+                    </td>
+                </tr>
             )
         })
         SetItemsOfCart(arr)
@@ -42,7 +50,17 @@ const Your_Cart=()=>{
             <>
             
             <div className="flex flex-wrap mb-4 lg:mb-9 mt-9 gap-5 items-center flex-1 mx-10">
-                {ItemsOfCart}
+                <table className="border-separate border border-slate-500">
+                    <thead>
+                        <tr>
+                            <th className="border border-slate-600 p-5">Product</th>
+                            <th className="border border-slate-600 p-5">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ItemsOfCart}
+                    </tbody>
+                </table>
             </div>
             <div className="bg-gray-300 p-3 fixed right-5 top-56 rounded-lg flex flex-col gap-3 items-center">
                     <div className="font-bold text-3xl">Place Order</div>
