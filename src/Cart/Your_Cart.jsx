@@ -49,7 +49,7 @@ const Your_Cart=()=>{
             :
             <>
             
-            <div className="flex flex-wrap mb-4 lg:mb-9 mt-9 gap-5 items-center flex-1 mx-10">
+            <div className="flex flex-wrap mb-4 lg:mb-9 mt-9 gap-5 items-center flex-1 mx-5 md:mx-10">
                 <table className="border-separate border border-slate-500">
                     <thead>
                         <tr>
