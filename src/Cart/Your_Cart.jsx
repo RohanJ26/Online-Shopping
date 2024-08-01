@@ -67,7 +67,7 @@ const Your_Cart=()=>{
                     <div className="font-bold text-3xl">Place Order</div>
                     <div className="lg:text-2xl">Total Amount to be Paid: </div>
                     {Cart_items.forEach(element => {
-                        TotalAmount+= Number(element.props.children.price)
+                        TotalAmount+= Number(element.props.children.price*map1.get(element.key))
                     })}
                     <div className="lg:text-xl">&#8377;{Number(TotalAmount).toLocaleString('en-IN')}</div>
                     <NavLink to={"/Order_Completed"}>
