@@ -39,7 +39,7 @@ export class Products{
                         {Number(this.stock)>3 ? <p className="text-green-600">In Stock</p>:<p className="text-red-600"> Only {this.stock} Remaining </p>}
 
                     </div>
-                    <button onClick={()=>(Click_add_to_cart(this.id))} className="bg-orange-500 px-5 text-white mb-2 rounded-lg transform transition-all duration-300 hover:scale-105">Add to Cart</button>
+                    <button onClick={()=>(Click_add_to_cart(this.id))} className="bg-orange-500 px-5 text-white mb-2 rounded-lg transform transition-all duration-300 active:scale-95">Add to Cart</button>
                 </div>
             </div>
         )
@@ -56,7 +56,7 @@ export class Products{
                     <div className="font-semibold">
                         {Number(this.stock)>3 ? <p className="text-green-600">In Stock</p>:<p className="text-red-600"> Only {this.stock} Remaining </p>}
                     </div>
-                    <button onClick={()=>(Click_remove_from_cart(this.id))} className="bg-red-600 px-5 text-white mb-2 rounded-lg transform transition-all duration-300 hover:scale-105">Remove from Cart</button>
+                    <button onClick={()=>(Click_remove_from_cart(this.id))} className="bg-red-600 px-5 text-white mb-2 rounded-lg transform transition-all duration-300 active:scale-95">Remove from Cart</button>
                 </div>
             </div>
         )
