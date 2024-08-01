@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import {Cart_items} from "../Products/products"
 import { change_number_subtract } from "./Cart";
 import { NavLink } from "react-router-dom";
+import { map1 } from "./Click_add_to_cart";
 
 let Click_remove_from_cart
-
 const Your_Cart=()=>{
     const initial_cart=[]
     Cart_items.forEach(element => {
         initial_cart.push(
             <tr key={element.key}>
-                <td className="border border-slate-600 p-5 flex flex-col gap-5">
-                    {element.props.children.In_Cart_Components()}
-                </td>
+                <td className="border border-slate-600 p-5">
+                    {element.props.children.In_Cart_Components()}</td>
+                <td className="border border-slate-600 p-5 text-center">
+                    {map1.get(element.key)}</td>
             </tr>
         )
     })
@@ -26,7 +27,7 @@ const Your_Cart=()=>{
         Cart_items.forEach(element => {
             arr.push(
                 <tr key={element.key}>
-                    <td className="border border-slate-600 p-5 flex flex-col gap-5">
+                    <td className="border border-slate-600 p-5">
                         {element.props.children.In_Cart_Components()}
                     </td>
                 </tr>
