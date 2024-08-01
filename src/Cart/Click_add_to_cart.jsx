@@ -16,8 +16,7 @@ const Click_add_to_cart=(id)=>{
                 keyCount.push(item.id)
             }
             else{
-                const val=map1.get(item.id)
-                map1.set(item.id,val+1)
+                map1.set(item.id,map1.get(item.id)+1)
             }
         }
     })
@@ -25,4 +24,4 @@ const Click_add_to_cart=(id)=>{
 }
 
 export default Click_add_to_cart
-export {map1}
+export {map1,keyCount}

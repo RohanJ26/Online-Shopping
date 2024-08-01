@@ -3,6 +3,7 @@ import {Cart_items} from "../Products/products"
 import { change_number_subtract } from "./Cart";
 import { NavLink } from "react-router-dom";
 import { map1 } from "./Click_add_to_cart";
+import { keyCount } from "./Click_add_to_cart";
 
 let Click_remove_from_cart
 const Your_Cart=()=>{
@@ -20,9 +21,25 @@ const Your_Cart=()=>{
     const [ItemsOfCart,SetItemsOfCart]=useState(initial_cart);
 
     Click_remove_from_cart=(id)=>{
-        const a= Cart_items.filter((prev)=>(Number(prev.key)!==Number(id)))
-        Cart_items.length = 0
-        Cart_items.push(...a)
+
+        let a
+        Cart_items.forEach((item)=>{
+            if(Number(item.key)===Number(id)){
+                if(map1.get(item.key)>1){
+                    map1.set(item.key,map1.get(item.key)-1)
+                    a=Cart_items
+                }
+                else{
+                    a=Cart_items.filter((prev)=>(Number(prev.key)!==Number(id)))
+                    Cart_items.length=0
+                    Cart_items.push(...a)
+                    map1.delete(item.key)
+                    let c=keyCount.filter((prev)=>(Number(prev)!==Number(id)))
+                    keyCount.length=0
+                    keyCount.push(...c)
+                }
+            }
+        })
         const arr=[]
         Cart_items.forEach(element => {
             arr.push(
