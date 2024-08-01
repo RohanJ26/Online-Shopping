@@ -30,6 +30,8 @@ const Your_Cart=()=>{
                     <td className="border border-slate-600 p-5">
                         {element.props.children.In_Cart_Components()}
                     </td>
+                    <td className="border border-slate-600 p-5 text-center">
+                    {map1.get(element.key)}</td>
                 </tr>
             )
         })
