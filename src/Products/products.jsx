@@ -2,9 +2,6 @@ import React from "react"
 import items from "./items"
 import {NavLink} from "react-router-dom"
 import { useCart } from "../CartContext"
-// import Click_add_to_cart from "../Cart/Click_add_to_cart"
-// import { Click_remove_from_cart } from "../Cart/Your_Cart"
-
 
 export class Products{
     constructor(id,img,type,brand,price,stock){
@@ -27,13 +24,7 @@ export class Products{
             </>
         )
     }
-
-    
-
 }
-
-
-
 
 const Lower_Components=({arg})=>{
     const {Click_add_to_cart}=useCart()
@@ -71,9 +62,6 @@ const In_Cart_Components=({arg})=>{
         </div>
     )
 }
-
-
-
 
 const product_list=[]
 for(let i=0;i<items.length;i++){

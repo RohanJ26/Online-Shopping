@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-// import {Cart_items} from "../Products/products"
-import { change_number_add, change_number_subtract } from "./Cart";
+import { change_number_subtract } from "./Cart";
 import { NavLink } from "react-router-dom";
-// import { map1 } from "./Click_add_to_cart";
-// import { keyCount } from "./Click_add_to_cart";
 import { CartProvider } from "../CartContext";
 import { In_Cart_Components } from "../Products/products";
 import { keyCount,map1,cartItem } from "../Routing/Outer_Components";
@@ -105,6 +102,3 @@ function Your_Cart() {
     )
 }
 export default Your_Cart
-
-
-

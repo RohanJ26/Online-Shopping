@@ -1,9 +1,5 @@
 import React from "react"
-import Header from "../Header/header"
-import Footer from "../Footer/footer"
 import product_list from "../Products/products"
-import Cart from "../Cart/Cart"
-
 
 const Home=()=>{
 
@@ -28,4 +24,3 @@ const Home=()=>{
 }
 
 export default Home
-

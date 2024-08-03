@@ -1,8 +1,6 @@
-import Cart from "../Cart/Cart";
 import product_list from "../Products/products";
 import { Lower_Components } from "../Products/products";
 import { CartProvider } from "../CartContext";
-import { useState } from "react";
 import { change_number_add } from "../Cart/Cart";
 
 const keyCount=[]
@@ -26,7 +24,6 @@ const Click_Outer_Components=({type})=>{
         change_number_add()
     }
 
-
     const components=[];
     product_list.forEach((prev)=>{
         if(prev.type===type){
@@ -36,12 +33,10 @@ const Click_Outer_Components=({type})=>{
         }
     })
     
-
     return(
         <CartProvider value={{Click_add_to_cart}}>
         <div className="flex flex-wrap mb-4 lg:mb-9 mt-9 gap-5 justify-center items-center flex-1">
-            {components}
-            
+            {components}         
         </div>
         </CartProvider>
     )
