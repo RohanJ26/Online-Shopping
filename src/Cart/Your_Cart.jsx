@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import {Cart_items} from "../Products/products"
-import { change_number_subtract } from "./Cart";
+// import {Cart_items} from "../Products/products"
+import { change_number_add, change_number_subtract } from "./Cart";
 import { NavLink } from "react-router-dom";
-import { map1 } from "./Click_add_to_cart";
-import { keyCount } from "./Click_add_to_cart";
+// import { map1 } from "./Click_add_to_cart";
+// import { keyCount } from "./Click_add_to_cart";
+import { CartProvider } from "../CartContext";
+import { In_Cart_Components } from "../Products/products";
+import { keyCount,map1,cartItem } from "../Routing/Outer_Components";
 
-let Click_remove_from_cart
-const Your_Cart=()=>{
+
+function Your_Cart() {
+    const CartItems=[...cartItem]
+    
     const initial_cart=[]
-    Cart_items.forEach(element => {
+    CartItems.forEach(element => {
         initial_cart.push(
             <tr key={element.key}>
                 <td className="border border-slate-600 p-5">
-                    {element.props.children.In_Cart_Components()}</td>
+                    {<In_Cart_Components arg={element.props.children}/>}</td>
                 <td className="border border-slate-600 p-5 text-center">
                     {map1.get(element.key)}</td>
             </tr>
@@ -20,19 +25,18 @@ const Your_Cart=()=>{
     })
     const [ItemsOfCart,SetItemsOfCart]=useState(initial_cart);
 
-    Click_remove_from_cart=(id)=>{
-
-        let a
-        Cart_items.forEach((item)=>{
+    const Click_remove_from_cart=(id)=>{
+        CartItems.forEach((item)=>{
             if(Number(item.key)===Number(id)){
                 if(map1.get(item.key)>1){
                     map1.set(item.key,map1.get(item.key)-1)
-                    a=Cart_items
                 }
                 else{
-                    a=Cart_items.filter((prev)=>(Number(prev.key)!==Number(id)))
-                    Cart_items.length=0
-                    Cart_items.push(...a)
+                    let a=cartItem.filter((prev)=>(Number(prev.key)!==Number(id)))
+                    cartItem.length=0;
+                    cartItem.push(...a)
+                    CartItems.length=0;
+                    CartItems.push(...cartItem)
                     map1.delete(item.key)
                     let c=keyCount.filter((prev)=>(Number(prev)!==Number(id)))
                     keyCount.length=0
@@ -41,11 +45,11 @@ const Your_Cart=()=>{
             }
         })
         const arr=[]
-        Cart_items.forEach(element => {
+        CartItems.forEach(element => {
             arr.push(
                 <tr key={element.key}>
                     <td className="border border-slate-600 p-5">
-                        {element.props.children.In_Cart_Components()}
+                        {<In_Cart_Components arg={element.props.children}/>}
                     </td>
                     <td className="border border-slate-600 p-5 text-center">
                     {map1.get(element.key)}</td>
@@ -58,8 +62,9 @@ const Your_Cart=()=>{
 
     let TotalAmount=0
     return(
+        <CartProvider value={{CartItems,Click_remove_from_cart}}>
         <div className="flex-1 mx-5">
-            {Cart_items.length===0 ?
+            {CartItems.length===0 ?
             <div className="m-5 flex flex-col items-center gap-20">
                 <div className="text-3xl">
                     Your Cart is empty !!
@@ -85,7 +90,7 @@ const Your_Cart=()=>{
             <div className="bg-gray-300 p-3 fixed right-5 top-56 rounded-lg flex flex-col gap-3 items-center">
                     <div className="font-bold text-3xl">Place Order</div>
                     <div className="lg:text-2xl">Total Amount to be Paid: </div>
-                    {Cart_items.forEach(element => {
+                    {CartItems.forEach(element => {
                         TotalAmount+= Number(element.props.children.price*map1.get(element.key))
                     })}
                     <div className="lg:text-xl">&#8377;{Number(TotalAmount).toLocaleString('en-IN')}</div>
@@ -96,10 +101,9 @@ const Your_Cart=()=>{
             </>
             }
         </div>
+        </CartProvider>
     )
 }
-export{ Cart_items}
-export {Click_remove_from_cart}
 export default Your_Cart
 
 
