@@ -1,14 +1,11 @@
 import './App.css'
-import Home from './Front_View/Home'
-import Header from './Header/header'
-import Footer from './Footer/footer'
+import Home from './components/Front_View/Home'
 import {RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom"
 import Click_Outer_Components from './Routing/Outer_Components'
-import Cart from './Cart/Cart'
 import Your_Cart from './Cart/Your_Cart'
-import Layout from './Layout/layout'
-import Final_Page from './Final_Page/Final_Page'
-import Layout2 from './Layout/layout2'
+import Layout from './components/Layout/layout'
+import Final_Page from './components/Final_Page/Final_Page'
+import Layout2 from './components/Layout/layout2'
 
 
 const router=createBrowserRouter(

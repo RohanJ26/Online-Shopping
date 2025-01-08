@@ -1,5 +1,5 @@
 import React from "react"
-import product_list from "../Products/products"
+import product_list from "../../Products/products";
 
 const Home=()=>{
 
